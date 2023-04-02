@@ -24,7 +24,10 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: us-east-1
-
+          
+      - name: Run Terraform Init
+        run: terraform init
+        
       - name: Run Terraform Validate
         run: terraform validate -no-color
 
