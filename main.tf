@@ -11,10 +11,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "cloudflare" {
-  api_key = data.aws_ssm_parameter.cloudflare_api_key.value
-  email   = data.aws_ssm_parameter.cloudflare_api_email.value
-}
+provider "cloudflare" {}
 
 resource "cloudflare_record" "cname" {
   for_each = local.cname_records

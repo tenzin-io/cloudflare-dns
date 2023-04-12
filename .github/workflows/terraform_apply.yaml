@@ -31,4 +31,7 @@ jobs:
         run: terraform validate -no-color
 
       - name: Run Terraform Apply
+        env:
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
         run: terraform apply -no-color
