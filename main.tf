@@ -7,13 +7,18 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = "us-east-1"
+}
+
 provider "cloudflare" {
-  api_token = var.cloudflare_api_token
+  api_key = data.aws_ssm_parameter.cloudflare_api_key.value
+  email   = data.aws_ssm_parameter.cloudflare_api_email.value
 }
 
 resource "cloudflare_record" "cname" {
   for_each = local.cname_records
-  zone_id  = var.cloudflare_zone_id
+  zone_id  = data.aws_ssm_parameter.cloudflare_zone_id.value
   type     = "CNAME"
   name     = each.key
   value    = each.value.content
@@ -23,7 +28,7 @@ resource "cloudflare_record" "cname" {
 
 resource "cloudflare_record" "txt" {
   for_each = local.txt_records
-  zone_id  = var.cloudflare_zone_id
+  zone_id  = data.aws_ssm_parameter.cloudflare_zone_id.value
   type     = "TXT"
   name     = each.key
   value    = each.value.content
