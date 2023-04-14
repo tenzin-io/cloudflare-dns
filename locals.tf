@@ -10,6 +10,12 @@ locals {
   cname_records = {
     "aws" = {
       content = "frontend.tenzin.io"
+    },
+    "kube-11-nginx-ingress" = {
+      content = "kube-11.tenzin.io"
+    },
+    "vs" = {
+      content = "kube-11-nginx-ingress"
     }
   }
 
