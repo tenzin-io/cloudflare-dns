@@ -4,6 +4,10 @@ locals {
     "kube-11" = {
       proxied = false
       content = "129.213.146.175"
+    },
+    "squid-1" = {
+      proxied = false
+      content = "129.213.25.154"
     }
   }
 
