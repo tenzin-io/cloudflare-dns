@@ -31,3 +31,13 @@ resource "cloudflare_record" "txt" {
   value    = each.value.content
   ttl      = try(each.value.ttl, 1)
 }
+
+resource "cloudflare_record" "a" {
+  for_each = local.a_records
+  zone_id  = chomp(data.aws_ssm_parameter.cloudflare_zone_id.value)
+  type     = "A"
+  name     = each.key
+  value    = each.value.content
+  proxied  = try(each.value.proxied, true)
+  ttl      = try(each.value.ttl, 1)
+}
