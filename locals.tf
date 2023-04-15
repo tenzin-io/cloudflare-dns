@@ -12,12 +12,9 @@ locals {
   }
 
   cname_records = {
-    "aws" = {
-      content = "frontend.tenzin.io"
-    },
-    "kube-11-nginx-ingress" = {
-      content = "kube-11.tenzin.io"
-    }
+    "kube-11-nginx-ingress" = { content = "kube-11.tenzin.io" },
+    "aws"                   = { content = "kube-11-nginx-ingress.tenzin.io" },
+    "github"                = { content = "kube-11-nginx-ingress.tenzin.io" }
   }
 
   txt_records = {
