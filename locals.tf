@@ -16,6 +16,7 @@ locals {
     "aws"                   = { content = "kube-11-nginx-ingress.tenzin.io" },
     "github"                = { content = "kube-11-nginx-ingress.tenzin.io" },
     "vs"                    = { content = "kube-11-nginx-ingress.tenzin.io" }
+    "vault"                 = { content = "kube-11-nginx-ingress.tenzin.io" }
   }
 
   txt_records = {
