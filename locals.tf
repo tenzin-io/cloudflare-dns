@@ -14,7 +14,8 @@ locals {
   cname_records = {
     "kube-11-nginx-ingress" = { content = "kube-11.tenzin.io" },
     "aws"                   = { content = "kube-11-nginx-ingress.tenzin.io" },
-    "github"                = { content = "kube-11-nginx-ingress.tenzin.io" }
+    "github"                = { content = "kube-11-nginx-ingress.tenzin.io" },
+    "vs"                    = { content = "kube-11-nginx-ingress.tenzin.io" }
   }
 
   txt_records = {
