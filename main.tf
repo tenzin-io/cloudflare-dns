@@ -11,7 +11,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "vault" {}
+provider "vault" {
+  address = "https://vault.tenzin.io"
+}
+
 provider "cloudflare" {}
 
 resource "cloudflare_record" "cname" {
