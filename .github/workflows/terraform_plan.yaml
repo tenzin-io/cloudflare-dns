@@ -25,6 +25,7 @@ jobs:
           url: https://vault.tenzin.io
           role: actions-runner-role-cloudflare-dns
           method: jwt
+          exportToken: true
           secrets: |
             secret/data/cloudflare api_key | CLOUDFLARE_API_KEY ;
             secret/data/cloudflare email | CLOUDFLARE_EMAIL ;
@@ -45,7 +46,7 @@ jobs:
         run: terraform validate -no-color
 
       - name: Run Terraform Plan
-        env:
-          CLOUDFLARE_API_KEY: ${{ steps.vault_secrets.outputs.CLOUDFLARE_API_KEY }}
-          CLOUDFLARE_EMAIL: ${{ steps.vault_secrets.outputs.CLOUDFLARE_EMAIL }}
+        # env:
+        #   CLOUDFLARE_API_KEY: ${{ steps.vault_secrets.outputs.CLOUDFLARE_API_KEY }}
+        #   CLOUDFLARE_EMAIL: ${{ steps.vault_secrets.outputs.CLOUDFLARE_EMAIL }}
         run: terraform plan -no-color
