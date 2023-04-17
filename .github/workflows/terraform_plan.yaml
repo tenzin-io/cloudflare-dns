@@ -43,6 +43,8 @@ jobs:
         run: terraform fmt -check
         
       - name: Run Terraform Validate
+        env:
+          TERRAFORM_VAULT_AUTH_JWT: ${{ secrets.GITHUB_TOKEN }}
         run: terraform validate -no-color
 
       - name: Run Terraform Plan
