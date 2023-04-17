@@ -44,10 +44,10 @@ jobs:
         
       - name: Run Terraform Validate
         env:
-          TERRAFORM_VAULT_AUTH_JWT: ${{ secrets.GITHUB_TOKEN }}
+          TERRAFORM_VAULT_AUTH_JWT: ${{ env.GITHUB_OIDC_TOKEN }}
         run: terraform validate -no-color
 
       - name: Run Terraform Plan
         env:
-          TERRAFORM_VAULT_AUTH_JWT: ${{ secrets.GITHUB_TOKEN }}
+          TERRAFORM_VAULT_AUTH_JWT: ${{ env.GITHUB_OIDC_TOKEN }}
         run: terraform plan -no-color
