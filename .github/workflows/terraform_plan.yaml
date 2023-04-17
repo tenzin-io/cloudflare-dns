@@ -27,7 +27,7 @@ jobs:
           method: jwt
           secrets: |
             secret/data/cloudflare api_key | CLOUDFLARE_API_KEY ;
-            secret/data/cloudflare email | CLOUDFLARE_API_EMAIL ;
+            secret/data/cloudflare email | CLOUDFLARE_EMAIL ;
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
