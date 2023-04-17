@@ -11,11 +11,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
+provider "vault" {}
 provider "cloudflare" {}
 
 resource "cloudflare_record" "cname" {
   for_each = local.cname_records
-  zone_id  = chomp(data.aws_ssm_parameter.cloudflare_zone_id.value)
+  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "CNAME"
   name     = each.key
   value    = each.value.content
@@ -25,7 +26,7 @@ resource "cloudflare_record" "cname" {
 
 resource "cloudflare_record" "txt" {
   for_each = local.txt_records
-  zone_id  = chomp(data.aws_ssm_parameter.cloudflare_zone_id.value)
+  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "TXT"
   name     = each.key
   value    = each.value.content
@@ -34,7 +35,7 @@ resource "cloudflare_record" "txt" {
 
 resource "cloudflare_record" "a" {
   for_each = local.a_records
-  zone_id  = chomp(data.aws_ssm_parameter.cloudflare_zone_id.value)
+  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "A"
   name     = each.key
   value    = each.value.content
