@@ -13,6 +13,9 @@ provider "aws" {
 
 provider "vault" {
   address = "https://vault.tenzin.io"
+  auth_login_jwt = {
+    role = "actions-runner-role-cloudflare-dns"
+  }
 }
 
 provider "cloudflare" {}

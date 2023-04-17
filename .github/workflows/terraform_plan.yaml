@@ -46,7 +46,6 @@ jobs:
         run: terraform validate -no-color
 
       - name: Run Terraform Plan
-        # env:
-        #   CLOUDFLARE_API_KEY: ${{ steps.vault_secrets.outputs.CLOUDFLARE_API_KEY }}
-        #   CLOUDFLARE_EMAIL: ${{ steps.vault_secrets.outputs.CLOUDFLARE_EMAIL }}
+        env:
+          TERRAFORM_VAULT_AUTH_JWT: ${{ secrets.GITHUB_TOKEN }}
         run: terraform plan -no-color
