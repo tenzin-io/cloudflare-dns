@@ -44,7 +44,7 @@ jobs:
 
       - name: Setup TERRAFORM_VAULT_AUTH_JWT
         run: |-
-          export TERRAFORM_VAULT_AUTH_JWT=$(echo $GITHUB_OIDC_TOKEN | jq -r .value)
+          echo TERRAFORM_VAULT_AUTH_JWT=$(echo $GITHUB_TOKEN | jq -r .value) >> $GITHUB_ENV
         
       - name: Run Terraform Validate
         run: terraform validate -no-color
