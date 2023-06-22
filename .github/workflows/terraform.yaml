@@ -21,7 +21,7 @@ jobs:
         id: vault_secrets
         with:
           url: https://vault.tenzin.io
-          role: actions-runner-role-cloudflare-dns
+          role: actions-runner-role-16f812964f3975cea478477e77bf82d2
           method: jwt
           exportToken: true
           secrets: |
@@ -57,7 +57,7 @@ jobs:
         id: vault_secrets
         with:
           url: https://vault.tenzin.io
-          role: actions-runner-role-cloudflare-dns
+          role: actions-runner-role-16f812964f3975cea478477e77bf82d2
           method: jwt
           exportToken: true
           secrets: |
