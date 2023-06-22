@@ -4,17 +4,17 @@ variable "a_records" {
     content = string
   }))
   description = "DNS A resource records to create"
-  default = {}
+  default     = {}
 }
 
 variable "cname_records" {
   type        = map(object({ content = string }))
   description = "DNS CNAME resource records to create"
-  default = {}
+  default     = {}
 }
 
 variable "txt_records" {
-  type = map(object({ content = string }))
+  type        = map(object({ content = string }))
   description = "DNS TXT resource records to create"
-  default = {}
+  default     = {}
 }
