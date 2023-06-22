@@ -7,18 +7,8 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
-
-provider "vault" {
-  address = "https://vault.tenzin.io"
-}
-
-provider "cloudflare" {}
-
 resource "cloudflare_record" "cname" {
-  for_each = local.cname_records
+  for_each = var.cname_records
   zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "CNAME"
   name     = each.key
@@ -28,7 +18,7 @@ resource "cloudflare_record" "cname" {
 }
 
 resource "cloudflare_record" "txt" {
-  for_each = local.txt_records
+  for_each = var.txt_records
   zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "TXT"
   name     = each.key
@@ -37,7 +27,7 @@ resource "cloudflare_record" "txt" {
 }
 
 resource "cloudflare_record" "a" {
-  for_each = local.a_records
+  for_each = var.a_records
   zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
   type     = "A"
   name     = each.key
