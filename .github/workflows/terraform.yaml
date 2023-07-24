@@ -25,7 +25,7 @@ jobs:
           method: jwt
           exportToken: true
           secrets: |
-            github/data/cloudflare api_token | CLOUDFLARE_API_TOKEN;
+            secrets/data/cloudflare api_token | CLOUDFLARE_API_TOKEN;
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -61,7 +61,7 @@ jobs:
           method: jwt
           exportToken: true
           secrets: |
-            github/data/cloudflare api_token | CLOUDFLARE_API_TOKEN;
+            secrets/data/cloudflare api_token | CLOUDFLARE_API_TOKEN;
      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
