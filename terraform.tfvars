@@ -12,6 +12,7 @@ cname_records = {
   "vs"                    = { content = "kube-11-nginx-ingress.tenzin.io" }
   "vault"                 = { content = "kube-11-nginx-ingress.tenzin.io" }
   "containers"            = { content = "kube-11-nginx-ingress.tenzin.io" }
+  "grafana"               = { content = "kube-11-nginx-ingress.tenzin.io" }
 }
 
 txt_records = {
