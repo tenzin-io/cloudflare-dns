@@ -21,5 +21,8 @@ txt_records = {
   },
   "_github-pages-challenge-tenzin-io" = {
     content = "9cf3e2b111d1f3c43b695d58e6faa0"
-  }
+  },
+  "@" = {
+    content = "atlassian-domain-verification=ReKaTONuklO9g4KCtKWJrNRXCSAjOJgt4ryuPZZDaRAsQSjlmZXjdsZW/6IVBfiy"
+  },
 }
