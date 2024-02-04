@@ -7,31 +7,16 @@ terraform {
   }
 }
 
-resource "cloudflare_record" "cname" {
-  for_each = var.cname_records
-  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
-  type     = "CNAME"
-  name     = each.key
-  value    = each.value.content
-  proxied  = try(each.value.proxied, true)
-  ttl      = try(each.value.ttl, 1)
+data "cloudflare_zone" "zone" {
+  name = "tenzin.io"
 }
 
-resource "cloudflare_record" "txt" {
-  for_each = var.txt_records
-  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
-  type     = "TXT"
-  name     = each.key
+resource "cloudflare_record" "record" {
+  for_each = { for _, record in var.dns_records : md5(join(",", [record.type, record.name, record.content])) => record }
+  zone_id  = data.cloudflare_zone.zone.id
+  name     = each.value.name
+  type     = each.value.type
   value    = each.value.content
-  ttl      = try(each.value.ttl, 1)
-}
-
-resource "cloudflare_record" "a" {
-  for_each = var.a_records
-  zone_id  = data.vault_generic_secret.cloudflare.data.zone_id
-  type     = "A"
-  name     = each.key
-  value    = each.value.content
-  proxied  = try(each.value.proxied, true)
-  ttl      = try(each.value.ttl, 1)
+  proxied  = each.value.type == "TXT" || each.value.type == "MX" ? null : each.value.proxied
+  ttl      = each.value.ttl
 }

@@ -1,20 +1,11 @@
-variable "a_records" {
-  type = map(object({
-    proxied = bool
+variable "dns_records" {
+  type = list(object({
+    name = string
+    type    = string
     content = string
+    proxied = optional(bool, true)
+    ttl     = optional(number, 1)
   }))
-  description = "DNS A resource records to create"
-  default     = {}
-}
-
-variable "cname_records" {
-  type        = map(object({ content = string }))
-  description = "DNS CNAME resource records to create"
-  default     = {}
-}
-
-variable "txt_records" {
-  type        = map(object({ content = string }))
-  description = "DNS TXT resource records to create"
-  default     = {}
+  description = "DNS resource records to create"
+  default     = null
 }

@@ -1,28 +1,68 @@
-a_records = {
-  "kube-11" = {
+dns_records = [
+  {
+    name    = "kube-11"
+    type    = "A"
     proxied = false
     content = "129.213.146.175"
-  }
-}
-
-cname_records = {
-  "kube-11-nginx-ingress" = { content = "kube-11.tenzin.io" },
-  "aws"                   = { content = "kube-11-nginx-ingress.tenzin.io" },
-  "github"                = { content = "kube-11-nginx-ingress.tenzin.io" },
-  "vs"                    = { content = "kube-11-nginx-ingress.tenzin.io" }
-  "vault"                 = { content = "kube-11-nginx-ingress.tenzin.io" }
-  "containers"            = { content = "kube-11-nginx-ingress.tenzin.io" }
-  "grafana-dev"           = { content = "kube-11-nginx-ingress.tenzin.io" }
-}
-
-txt_records = {
-  "_github-challenge-tenzin-io-organization" = {
+    ttl     = 300
+  },
+  {
+    name    = "kube-11-nginx-ingress"
+    type    = "CNAME"
+    content = "kube-11.tenzin.io"
+  },
+  {
+    name    = "aws"
+    type    = "CNAME"
+    content = "kube-11-nginx-ingress.tenzin.io"
+  },
+  {
+    name    = "github"
+    type    = "CNAME"
+    content = "kube-11-nginx-ingress.tenzin.io"
+  },
+  {
+    name    = "vault"
+    type    = "CNAME"
+    content = "kube-11-nginx-ingress.tenzin.io"
+  },
+  {
+    name    = "atlassian-3cf567._domainkey.tenzin.io"
+    type    = "CNAME"
+    content = "atlassian-3cf567.dkim.atlassian.net."
+  },
+  {
+    name    = "atlassian-65ae54._domainkey.tenzin.io"
+    type    = "CNAME"
+    content = "atlassian-65ae54.dkim.atlassian.net."
+  },
+  {
+    name    = "atlassian-bounces.tenzin.io"
+    type    = "CNAME"
+    content = "bounces.mail-us.atlassian.net."
+  },
+  {
+    name    = "_github-challenge-tenzin-io-organization"
+    type    = "TXT"
     content = "3927b66417"
+    ttl     = 300
   },
-  "_github-pages-challenge-tenzin-io" = {
+  {
+    name    = "_github-pages-challenge-tenzin-io"
+    type    = "TXT"
     content = "9cf3e2b111d1f3c43b695d58e6faa0"
+    ttl     = 300
   },
-  "@" = {
+  {
+    name    = "tenzin.io"
+    type    = "TXT"
     content = "atlassian-domain-verification=ReKaTONuklO9g4KCtKWJrNRXCSAjOJgt4ryuPZZDaRAsQSjlmZXjdsZW/6IVBfiy"
+    ttl     = 300
   },
-}
+  {
+    name    = "tenzin.io"
+    type    = "TXT"
+    content = "atlassian-sending-domain-verification=2ebec421-ae7f-4079-bc4a-26c94f1d0fcd"
+    ttl     = 300
+  }
+]
