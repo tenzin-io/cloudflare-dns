@@ -40,10 +40,10 @@ jobs:
         run: terraform fmt -check
 
       - name: Run Terraform Validate
-        run: terraform validate -no-color
+        run: terraform validate
 
       - name: Run Terraform Plan
-        run: terraform plan -no-color
+        run: terraform plan
 
   apply:
     needs: [plan-and-validate]
@@ -73,4 +73,4 @@ jobs:
         run: terraform init
 
       - name: Run Terraform Apply
-        run: terraform apply -no-color -auto-approve
+        run: terraform apply -auto-approve
