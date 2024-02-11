@@ -30,16 +30,22 @@ dns_records = [
     name    = "atlassian-3cf567._domainkey.tenzin.io"
     type    = "CNAME"
     content = "atlassian-3cf567.dkim.atlassian.net."
+    proxied = false
+    ttl     = 300
   },
   {
     name    = "atlassian-65ae54._domainkey.tenzin.io"
     type    = "CNAME"
     content = "atlassian-65ae54.dkim.atlassian.net."
+    proxied = false
+    ttl     = 300
   },
   {
     name    = "atlassian-bounces.tenzin.io"
     type    = "CNAME"
     content = "bounces.mail-us.atlassian.net."
+    proxied = false
+    ttl     = 300
   },
   {
     name    = "_github-challenge-tenzin-io-organization"
