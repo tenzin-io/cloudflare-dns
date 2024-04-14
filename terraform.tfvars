@@ -70,5 +70,11 @@ dns_records = [
     type    = "TXT"
     content = "atlassian-sending-domain-verification=2ebec421-ae7f-4079-bc4a-26c94f1d0fcd"
     ttl     = 300
+  },
+  {
+    name    = "tenzin.io"
+    type    = "TXT"
+    content = "google-site-verification=bqLGKXx-iU_hxDRQsCcl5nPXokEeXNfhgrlYPQUYT6I"
+    ttl     = 300
   }
 ]
